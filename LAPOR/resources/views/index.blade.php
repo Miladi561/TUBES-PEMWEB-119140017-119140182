@@ -4,7 +4,7 @@
 <head>
   <title>SIMPLE LAPOR</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="{{ asset('assets') }}/css/style.css" />
+  <link rel="stylesheet" href="{{ asset('assets') }}/style.css" />
 </head>
 
 <body>
@@ -42,7 +42,7 @@
         @endif
         <div class="col text-right">
           <span>Waktu : {{ $post->created_at }}</span>
-          <span><a href="/post/{{ $post->id }}">Lihat Selengkapnya <i class="fa fa-angle-right"></i></a></span>
+          <span><a href="{{ route('show', $post->id) }}">Lihat Selengkapnya <i class="fa fa-angle-right"></i></a></span>
         </div>
       </div>
     </div>
