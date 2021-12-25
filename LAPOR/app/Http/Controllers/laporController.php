@@ -15,7 +15,13 @@ class laporController extends Controller
     public function index()
     {
         //
-        $lapors = Lapor::orderBy('id', 'DESC')->get();
+
+        if(request('keyword')){
+            $lapors = Lapor::where('body', 'Like', '%'. request('keyword') . '%')->get();
+        } else{
+            $lapors = Lapor::orderBy('id', 'DESC')->get();
+        }
+
         return view('index', compact('lapors'));
     }
 
@@ -47,7 +53,7 @@ class laporController extends Controller
             ]);
 
 
-            Post::create([
+            Lapor::create([
                 'body' => $request->laporan,
                 'aspek' => $request->aspek,
                 'lampiran' => $request->file('lampiran')->move('lampiran', $request->file('lampiran')->hashName())
